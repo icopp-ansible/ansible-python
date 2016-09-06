@@ -1,0 +1,11 @@
+---
+- name: Install the latest stable Python 2 via Homebrew
+  package:
+    name: python
+    state: latest
+  when: ansible_os_family == "Darwin"
+
+- name: Add workaround for distutils user installation bug
+  copy:
+    src: pydistutils.cfg
+    dest: ~/.pydistutils.cfg
